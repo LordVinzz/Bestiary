@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <script>
+        function submitForm() {
+            // Get data from the input field
+            var data = document.getElementById('dropdown').value;
+    
+            // Make a POST request using fetch
+            fetch('/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'data=' + encodeURIComponent(data),
+            })
+            .then(response => response.json())
+            .then(data => {
+                var parsedData = JSON.parse(JSON.stringify(data));
+                {
+                    var newDiv = document.createElement('div');
+                    var mobName = document.createElement('h1')
+    
+                    mobName.textContent = parsedData["NAM"]["Value"]
+    
+                    newDiv.className = 'bordered-div';
+    
+                    newDiv.appendChild(mobName)
+                    
+                    var skill_list = document.createElement("ul");
+                
+                    
+                    for (const e of ["STR", "DEX", "CON", "INT", "WIS", "CHA"]){
+                        var current_skill = document.createElement("li");
+                        current_skill.textContent = `${e} : ${parsedData[e]["Value"]}`;
+                        skill_list.appendChild(current_skill);
+                    }
+                        
+                    
+                    newDiv.appendChild(skill_list)
+
+                    var container = document.getElementById('main-container');
+                    container.appendChild(newDiv);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+    
+</head>
+
+
+<body>
+    <div class="grid-container" id="main-container">
+        <div class="bordered-div">
+            <h1>SPAWNER</h1>
+
+            <form method="post">
+                <label for="dropdown">Select creature:</label>
+                <select id="dropdown" name="dropdown">
+                    <option value="Goblin">Goblin</option>
+                </select>
+                <button type="button" onclick="submitForm()">Instanciate</button>
+            </form>
+
+            
+        </div>
+    </div>
+    
+</body>
+</html>

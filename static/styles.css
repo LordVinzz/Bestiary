@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #131313;
+}
+
+.bordered-div {
+    border: 2px solid #3498db;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #241341;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.bordered-div h1 {
+    margin: 0px;
+    text-align: center;
+    color: #3498db; /* Peaceful text color */
+    font-family: 'Arial', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
+}
+
+.bordered-div ul {
+    list-style-type: none;
+    padding: 0%;
+}
+
+.bordered-div li {
+    color: #B4D2E7;
+}
+
+.bordered-div label {
+    color: #3498db;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 16px;
+}
