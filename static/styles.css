@@ -13,7 +13,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.bordered-div h1 {
+.bordered-div h1,h2 {
     margin: 0px;
     text-align: center;
     color: #3498db; /* Peaceful text color */

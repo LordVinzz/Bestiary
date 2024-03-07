@@ -21,32 +21,9 @@
             })
             .then(response => response.json())
             .then(data => {
-                var parsedData = JSON.parse(JSON.stringify(data));
-                {
-                    var newDiv = document.createElement('div');
-                    var mobName = document.createElement('h1')
-    
-                    mobName.textContent = parsedData["NAM"]["Value"]
-    
-                    newDiv.className = 'bordered-div';
-    
-                    newDiv.appendChild(mobName)
-                    
-                    var skill_list = document.createElement("ul");
-                
-                    
-                    for (const e of ["STR", "DEX", "CON", "INT", "WIS", "CHA"]){
-                        var current_skill = document.createElement("li");
-                        current_skill.textContent = `${e} : ${parsedData[e]["Value"]}`;
-                        skill_list.appendChild(current_skill);
-                    }
-                        
-                    
-                    newDiv.appendChild(skill_list)
-
-                    var container = document.getElementById('main-container');
-                    container.appendChild(newDiv);
-                }
+                var parsedData = data;
+                var grid = document.getElementById("main-container");
+                grid.innerHTML += parsedData;
             })
             .catch(error => console.error('Error:', error));
         }

@@ -73,8 +73,20 @@ class Creature:
         self.json_data["HP"] = {"Value": self.get_value("MHP"), "Immuable":False}
 
     def __str__(self):
+        result = f'''<div class="bordered-div">
+            <h1>{self.get_value("NAM")}</h1>
+            <h2>HP : {self.get_value("HP")} / {self.get_value("MHP")}</h2>
+            <ul>
+                <li>STR : {self.get_value("STR")}</li>
+                <li>DEX : {self.get_value("DEX")}</li>
+                <li>CON : {self.get_value("CON")}</li>
+                <li>INT : {self.get_value("INT")}</li>
+                <li>WIS : {self.get_value("WIS")}</li>
+                <li>CHA : {self.get_value("CHA")}</li>
+            </ul>
+        </div>'''
 
-        return self.json_data
+        return result
     
 app = Flask(__name__)
 
