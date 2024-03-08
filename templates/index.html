@@ -8,10 +8,8 @@
 
     <script>
         function submitForm() {
-            // Get data from the input field
             var data = document.getElementById('dropdown').value;
-    
-            // Make a POST request using fetch
+
             fetch('/submit', {
                 method: 'POST',
                 headers: {
@@ -35,18 +33,17 @@
 <body>
     <div class="grid-container" id="main-container">
         <div class="bordered-div">
-            <h1>SPAWNER</h1>
-
+            <div class="top-div">
+                <h1>SPAWNER</h1>
+            </div>
             <form method="post">
                 <label for="dropdown">Select creature:</label>
                 <select id="dropdown" name="dropdown">
                     <option value="Goblin">Goblin</option>
                 </select>
                 <button type="button" onclick="submitForm()">Instanciate</button>
-            </form>
-
-            
-        </div>
+            </form>        
+        </div>  
     </div>
     
 </body>

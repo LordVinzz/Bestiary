@@ -24,8 +24,9 @@ bestiairy = {
 class Creature:
 
     calculate_skill_base = lambda name,skill : bestiairy[name][skill] + randint(bestiairy[name][skill + "_std"][0],bestiairy[name][skill + "_std"][1])
-    calculate_ac = lambda base_ac, dex : (base_ac + dex - 10)//10
+    calculate_ac = lambda base_ac, dex : base_ac + (dex - 10)//2
     calculate_mhp = lambda base_hp, level, con, hp_dices : base_hp + (level//4) * ((con - 10) // 2) + randint(hp_dices[0], (level - 1) * hp_dices[1] * hp_dices[0])
+    
     def skill_add_pts(self, skill, n=1):
         self.json_data[skill]["Value"] += n
 
@@ -74,16 +75,32 @@ class Creature:
 
     def __str__(self):
         result = f'''<div class="bordered-div">
-            <h1>{self.get_value("NAM")}</h1>
-            <h2>HP : {self.get_value("HP")} / {self.get_value("MHP")}</h2>
-            <ul>
-                <li>STR : {self.get_value("STR")}</li>
-                <li>DEX : {self.get_value("DEX")}</li>
-                <li>CON : {self.get_value("CON")}</li>
-                <li>INT : {self.get_value("INT")}</li>
-                <li>WIS : {self.get_value("WIS")}</li>
-                <li>CHA : {self.get_value("CHA")}</li>
-            </ul>
+            <div class ="top-div">
+
+                <h1>{self.get_value("NAM")} AC : {self.get_value("AC")}</h1>
+                <h2>HP : {self.get_value("HP")} / {self.get_value("MHP")}</h2>
+
+            </div>
+
+            <div class="side-by-side">
+                <div class="half-width">
+                    <ul>
+                        <li>STR : {self.get_value("STR")}</li>
+                        <li>DEX : {self.get_value("DEX")}</li>
+                        <li>CON : {self.get_value("CON")}</li>
+                        <li>INT : {self.get_value("INT")}</li>
+                        <li>WIS : {self.get_value("WIS")}</li>
+                        <li>CHA : {self.get_value("CHA")}</li>
+                    </ul>
+                </div>
+                <div class="half-width">
+                    <button>Roll Atk</button>
+                    <button>BUTTOn</button>
+                    <button>BUTTOn</button>
+                    <button>BUTTOn</button>
+
+                </div>
+            </div>
         </div>'''
 
         return result
