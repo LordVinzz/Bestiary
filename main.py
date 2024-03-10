@@ -38,6 +38,9 @@ class Creature:
 
     def __init__(self, name, level):
         
+        self.cardId = session["cards"]
+        session["cards"] += 1
+
         self.json_data = {
             "NAM" : {"Value":name, "Immuable":True},
             "STR" : {"Value": Creature.calculate_skill_base(name, "STR"), "Immuable":False},
@@ -74,13 +77,22 @@ class Creature:
         self.json_data["HP"] = {"Value": self.get_value("MHP"), "Immuable":False}
 
     def __str__(self):
-        result = f'''<div class="bordered-div">
+        result = f'''<div class="bordered-div" id="{self.cardId}">
             <div class ="top-div">
 
-                <h1>{self.get_value("NAM")} AC : {self.get_value("AC")}</h1>
-                <h2>HP : {self.get_value("HP")} / {self.get_value("MHP")}</h2>
+                <h1>{self.get_value("NAM")}</h1>
+                <div class="side-by-side">
+                    <div class="half-width">
+                        <h3>❤️ {self.get_value("HP")} / {self.get_value("MHP")}</h3>
+                    </div>
 
-            </div>
+                    
+                    <div class="half-width">
+                        <h3>🛡️ {self.get_value("AC")}</h3>
+                    </div>
+                </div>
+                
+
 
             <div class="side-by-side">
                 <div class="half-width">
@@ -94,10 +106,19 @@ class Creature:
                     </ul>
                 </div>
                 <div class="half-width">
-                    <button>Roll Atk</button>
-                    <button>BUTTOn</button>
-                    <button>BUTTOn</button>
-                    <button>BUTTOn</button>
+                    <p>Quick dices</p>
+                    <div class="btn-container">
+                        <button onclick="rollDice({self.cardId}, 20)">1d20</button>
+                        <button onclick="rollDice({self.cardId}, 10)">1d10</button>
+                        <button onclick="rollDice({self.cardId}, 8)">1d8</button>
+                        <button onclick="rollDice({self.cardId}, 4)">1d4</button>
+                        
+                        <label onclick="setAdv({self.cardId}, 2)">🟩</label>
+                        <label onclick="setAdv({self.cardId}, -2)">🟥</label>
+                    
+
+                    </div>
+                    <p>🎲</p>
 
                 </div>
             </div>
@@ -106,6 +127,7 @@ class Creature:
         return result
     
 app = Flask(__name__)
+app.secret_key = "andithoughtmyjokeswerebad"
 
 @app.route('/submit', methods=['POST'])
 def monster():
@@ -116,6 +138,7 @@ def monster():
 
 @app.route('/')
 def index():
+    session["cards"] = 0
     return render_template('index.html')
 
 # http://localhost:5000

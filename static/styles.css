@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'sherwood';
+    src: url('sherwood.ttf') format('truetype');
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,51 +11,61 @@ body {
 }
 
 .bordered-div {
-    border: 2px solid #3498db;
-    padding: 15px;
+    border: 2px solid goldenrod;
+    padding: 5px;
     border-radius: 8px;
-    background-color: #432d68;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #090909;
+    box-shadow: 0 0 10px rgb(255, 0, 0, 0.3);
 }
 
-.bordered-div h1,h2 {
+.bordered-div h1,
+h2,
+h3 {
     margin: 0px;
     text-align: center;
     color: #3498db;
-    font-family: 'Arial', sans-serif;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
+    font-family: 'sherwood', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .bordered-div ul {
     list-style-type: none;
     padding: 0%;
-}
-
-.bordered-div li {
-    color: #B4D2E7;
-}
-
-.bordered-div label {
-    color: #3498db;
+    color: lightgrey;
+    font-family: 'sherwood', sans-serif;
 }
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(220px, 220px));
     grid-gap: 16px;
 }
 
 .top-div {
     text-align: center;
-    margin:5px;
+    margin: 5px;
 }
 
 .side-by-side {
     display: flex;
 }
 
-.side-by-side button {
-    margin: 5px;
+
+.btn-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(40px, 1fr));
+    grid-gap: 2px;
+}
+
+.btn-container button {
+    font-family: 'sherwood', sans-serif;
+}
+
+.side-by-side p {
+    margin-bottom: 0px;
+    color: lightgrey;
+    text-align: center;
+    font-family: 'sherwood', sans-serif;
 }
 
 .half-width {
@@ -58,6 +73,7 @@ body {
 }
 
 ul {
+    text-align: center;
     list-style-type: none;
     padding: 0;
 }

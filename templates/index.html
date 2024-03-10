@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 
     <script>
+        var adv = {};
+
         function submitForm() {
             var data = document.getElementById('dropdown').value;
 
@@ -17,16 +20,57 @@
                 },
                 body: 'data=' + encodeURIComponent(data),
             })
-            .then(response => response.json())
-            .then(data => {
-                var parsedData = data;
-                var grid = document.getElementById("main-container");
-                grid.innerHTML += parsedData;
-            })
-            .catch(error => console.error('Error:', error));
+                .then(response => response.json())
+                .then(data => {
+                    var parsedData = data;
+                    var grid = document.getElementById("main-container");
+                    grid.innerHTML += parsedData;
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function rollDice(cardId, max) {
+
+            var i = Math.floor(Math.random() * max) + 1;
+            var card = document.getElementById(cardId);
+
+            switch (adv[cardId]) {
+                default:
+                case undefined:
+                    card.children[0].children[2].children[1].children[2].textContent = `🎲 : ${i}`;
+                    break;
+                case 2:
+                    var j = Math.floor(Math.random() * max) + 1;
+                    i = Math.max(i, j);
+                    card.children[0].children[2].children[1].children[2].textContent = `⏫🎲 : ${i}`;
+                    break;
+                case -2:
+                    var j = Math.floor(Math.random() * max) + 1;
+                    i = Math.min(i, j);
+                    card.children[0].children[2].children[1].children[2].textContent = `⏬🎲 : ${i}`;
+                    break;
+
+            }
+
+
+            switch (i) {
+                case 1:
+                    card.children[0].children[2].children[1].children[2].style.color = 'red';
+                    break;
+                case max:
+                    card.children[0].children[2].children[1].children[2].style.color = 'green';
+                    break;
+                default:
+                    card.children[0].children[2].children[1].children[2].style.color = 'lightgrey';
+                    break;
+            }
+        }
+
+        function setAdv(cardId, i) {
+            adv[cardId] = i
         }
     </script>
-    
+
 </head>
 
 
@@ -42,9 +86,10 @@
                     <option value="Goblin">Goblin</option>
                 </select>
                 <button type="button" onclick="submitForm()">Instanciate</button>
-            </form>        
-        </div>  
+            </form>
+        </div>
     </div>
-    
+
 </body>
+
 </html>
