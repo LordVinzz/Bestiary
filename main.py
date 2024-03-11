@@ -1,29 +1,12 @@
 from flask import *
 from random import randint
+import json
 
-bestiairy = {
-    "Goblin":{
-      "STR":12,
-      "STR_std":[-1, 3],
-      "DEX":11,
-      "DEX_std":[0, 4],
-      "CON":10,
-      "CON_std":[-2,2],
-      "INT":9,
-      "INT_std":[-3,1],
-      "WIS":9,
-      "WIS_std":[-2,2],
-      "CHA":10,
-      "CHA_std":[-4,0],
-      "AC":11,
-      "Base_Hp":10,
-      "Hp_Dices":[1,4]
-    }
-}
+bestiary = None
 
 class Creature:
 
-    calculate_skill_base = lambda name,skill : bestiairy[name][skill] + randint(bestiairy[name][skill + "_std"][0],bestiairy[name][skill + "_std"][1])
+    calculate_skill_base = lambda name,skill : bestiary[name][skill] + randint(bestiary[name][skill + "_std"][0],bestiary[name][skill + "_std"][1])
     calculate_ac = lambda base_ac, dex : base_ac + (dex - 10)//2
     calculate_mhp = lambda base_hp, level, con, hp_dices : base_hp + (level//4) * ((con - 10) // 2) + randint(hp_dices[0], (level - 1) * hp_dices[1] * hp_dices[0])
     
@@ -34,7 +17,7 @@ class Creature:
         return self.json_data[key]["Value"]
     
     def get_bestiary_data(self,key):
-        return bestiairy[self.get_value("NAM")][key]
+        return bestiary[self.get_value("NAM")][key]
 
     def __init__(self, name, level):
         
@@ -130,10 +113,16 @@ app = Flask(__name__)
 app.secret_key = "andithoughtmyjokeswerebad"
 
 @app.route('/submit', methods=['POST'])
-def monster():
+def instantiate():
     data = request.form.get('data')
     c = Creature(data, 15)
     return jsonify(c.__str__())
+
+@app.route('/getBestiary', methods=['GET'])
+def getBestiary():
+
+    result = {"data": list(bestiary.keys())}
+    return jsonify(result)
 
 
 @app.route('/')
@@ -144,4 +133,6 @@ def index():
 # http://localhost:5000
 
 if __name__ == '__main__':
+    with open('static/bestiary.json', 'r') as file:
+        bestiary = json.load(file)
     app.run(debug=True)

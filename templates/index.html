@@ -10,7 +10,25 @@
     <script>
         var adv = {};
 
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('/getBestiary')
+                .then(response => response.json())
+                .then(data => {
+                    var container = document.getElementById('dropdown');
+
+                    data["data"].forEach(element => {
+                        var newElement = document.createElement('option')
+                        newElement.textContent = element
+                        newElement.value = element
+                        container.appendChild(newElement)
+                    });
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        });
+
         function submitForm() {
+            document.getElementById("instBtn").disabled = true
+
             var data = document.getElementById('dropdown').value;
 
             fetch('/submit', {
@@ -25,8 +43,13 @@
                     var parsedData = data;
                     var grid = document.getElementById("main-container");
                     grid.innerHTML += parsedData;
+                    document.getElementById("instBtn").disabled = false
+
                 })
-                .catch(error => console.error('Error:', error));
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById("instBtn").disabled = false
+                });
         }
 
         function rollDice(cardId, max) {
@@ -51,7 +74,6 @@
                     break;
 
             }
-
 
             switch (i) {
                 case 1:
@@ -83,9 +105,8 @@
             <form method="post">
                 <label for="dropdown">Select creature:</label>
                 <select id="dropdown" name="dropdown">
-                    <option value="Goblin">Goblin</option>
                 </select>
-                <button type="button" onclick="submitForm()">Instanciate</button>
+                <button type="button" onclick="submitForm()" id="instBtn">Instantiate</button>
             </form>
         </div>
     </div>
