@@ -34,6 +34,11 @@ QuestKeeper is a lightweight web application built with Python and Flask, design
 2. Open your web browser and go to `http://localhost:5000` to access QuestKeeper.
 3. Start managing your bestiary, adding creatures, and tracking their stats as needed.
 
+## Project Paradigm
+
+QuestKeeper follows a unique paradigm aimed at achieving a lightweight frontend with maximum modularity in the backend. The project prioritizes a fixed and minimalistic frontend to ensure a seamless user experience, while the backend is designed to be highly modular. This approach allows for easy extensibility and modification of backend functionalities without the need for significant frontend adjustments. Dungeon Masters can expect a stable and consistent user interface while enjoying the flexibility to customize and expand the backend to suit their specific campaign needs. The goal is to create a powerful tool that evolves with the Dungeon Master's requirements, offering a robust and adaptable platform for managing campaigns.
+
+
 ## Contributing
 
 1.  Fork the repository.
