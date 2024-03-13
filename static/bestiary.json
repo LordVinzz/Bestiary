@@ -1,154 +1,34 @@
 {
   "Goblin": {
-    "STR": 12,
-    "STR_std": [
-      -1,
-      3
-    ],
-    "DEX": 11,
-    "DEX_std": [
-      0,
-      4
-    ],
-    "CON": 10,
-    "CON_std": [
-      -2,
-      2
-    ],
-    "INT": 9,
-    "INT_std": [
-      -3,
-      1
-    ],
-    "WIS": 9,
-    "WIS_std": [
-      -2,
-      2
-    ],
-    "CHA": 10,
-    "CHA_std": [
-      -4,
-      0
-    ],
-    "AC": 11,
-    "Base_Hp": 10,
-    "Hp_Dices": [
+    "strength": {
+      "min": 11,
+      "max": 15
+    },
+    "dexterity": {
+      "min": 11,
+      "max": 15
+    },
+    "constitution": {
+      "min": 8,
+      "max": 12
+    },
+    "intelligence": {
+      "min": 6,
+      "max": 10
+    },
+    "wisdom": {
+      "min": 7,
+      "max": 11
+    },
+    "charisma": {
+      "min": 6,
+      "max": 10
+    },
+    "armor_class": 11,
+    "max_health_point": 10,
+    "hp_dices": [
       1,
       4
-    ]
-  },
-  "Orc": {
-    "STR": 16,
-    "STR_std": [
-      1,
-      4
-    ],
-    "DEX": 10,
-    "DEX_std": [
-      -2,
-      2
-    ],
-    "CON": 14,
-    "CON_std": [
-      0,
-      3
-    ],
-    "INT": 8,
-    "INT_std": [
-      -3,
-      1
-    ],
-    "WIS": 8,
-    "WIS_std": [
-      -3,
-      1
-    ],
-    "CHA": 9,
-    "CHA_std": [
-      -2,
-      2
-    ],
-    "AC": 13,
-    "Base_Hp": 15,
-    "Hp_Dices": [
-      2,
-      6
-    ]
-  },
-  "Dragon": {
-    "STR": 20,
-    "STR_std": [
-      2,
-      5
-    ],
-    "DEX": 14,
-    "DEX_std": [
-      1,
-      4
-    ],
-    "CON": 18,
-    "CON_std": [
-      2,
-      6
-    ],
-    "INT": 16,
-    "INT_std": [
-      1,
-      4
-    ],
-    "WIS": 14,
-    "WIS_std": [
-      1,
-      4
-    ],
-    "CHA": 20,
-    "CHA_std": [
-      3,
-      7
-    ],
-    "AC": 18,
-    "Base_Hp": 100,
-    "Hp_Dices": [
-      10,
-      10
-    ]
-  },
-  "Werewolf": {
-    "STR": 18,
-    "STR_std": [
-      2,
-      5
-    ],
-    "DEX": 16,
-    "DEX_std": [
-      1,
-      4
-    ],
-    "CON": 14,
-    "CON_std": [
-      0,
-      3
-    ],
-    "INT": 12,
-    "INT_std": [
-      0,
-      3
-    ],
-    "WIS": 12,
-    "WIS_std": [
-      0,
-      3
-    ],
-    "CHA": 14,
-    "CHA_std": [
-      0,
-      3
-    ],
-    "AC": 15,
-    "Base_Hp": 40,
-    "Hp_Dices": [
-      4,
-      8
     ]
   }
 }

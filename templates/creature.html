@@ -1,24 +1,24 @@
 <div class="bordered-div" id="{{creature.card_id}}">
     <div class="top-div">
-        <h1>{{creature.get_value("NAM")}}</h1>
+        <h1>{{creature.name}}</h1>
         <div class="side-by-side">
             <div class="half-width">
-                <h3>❤️ {{creature.get_value("HP")}} / {{creature.get_value("MHP")}}</h3>
+                <h3>❤️ {{creature.current_health_point}} / {{creature.max_health_point}}</h3>
             </div>
             <div class="half-width">
-                <h3>🛡️ {{creature.get_value("AC")}}</h3>
+                <h3>🛡️ {{creature.armor_class}}</h3>
             </div>
         </div>
 
         <div class="side-by-side">
             <div class="half-width">
                 <ul>
-                    <li>STR : {{creature.get_value("STR")}}</li>
-                    <li>DEX : {{creature.get_value("DEX")}}</li>
-                    <li>CON : {{creature.get_value("CON")}}</li>
-                    <li>INT : {{creature.get_value("INT")}}</li>
-                    <li>WIS : {{creature.get_value("WIS")}}</li>
-                    <li>CHA : {{creature.get_value("CHA")}}</li>
+                    <li>STR : {{creature.strength}}</li>
+                    <li>DEX : {{creature.dexterity}}</li>
+                    <li>CON : {{creature.constitution}}</li>
+                    <li>INT : {{creature.intelligence}}</li>
+                    <li>WIS : {{creature.wisdom}}</li>
+                    <li>CHA : {{creature.charisma}}</li>
                 </ul>
             </div>
             <div class="half-width">
