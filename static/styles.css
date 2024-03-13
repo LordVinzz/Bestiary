@@ -6,8 +6,9 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
+    padding: 10px;
     background-color: #131313;
+    color: #d3d3d3;
 }
 
 .bordered-div {
@@ -31,7 +32,6 @@ h3 {
 .bordered-div ul {
     list-style-type: none;
     padding: 0%;
-    color: lightgrey;
     font-family: 'sherwood', sans-serif;
 }
 
