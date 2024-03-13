@@ -38,11 +38,10 @@
                 },
                 body: 'data=' + encodeURIComponent(data),
             })
-                .then(response => response.json())
+                .then(response => response.text())
                 .then(data => {
-                    var parsedData = data;
                     var grid = document.getElementById("main-container");
-                    grid.innerHTML += parsedData;
+                    grid.innerHTML += data;
                     document.getElementById("instBtn").disabled = false
 
                 })
@@ -52,12 +51,12 @@
                 });
         }
 
-        function rollDice(cardId, max) {
+        function rollDice(card_id, max) {
 
             var i = Math.floor(Math.random() * max) + 1;
-            var card = document.getElementById(cardId);
+            var card = document.getElementById(card_id);
 
-            switch (adv[cardId]) {
+            switch (adv[card_id]) {
                 default:
                 case undefined:
                     card.children[0].children[2].children[1].children[2].textContent = `🎲 : ${i}`;
@@ -88,8 +87,8 @@
             }
         }
 
-        function setAdv(cardId, i) {
-            adv[cardId] = i
+        function setAdv(card_id, i) {
+            adv[card_id] = i
         }
     </script>
 

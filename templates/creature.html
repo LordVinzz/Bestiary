@@ -1,0 +1,39 @@
+<div class="bordered-div" id="{{creature.card_id}}">
+    <div class="top-div">
+        <h1>{{creature.get_value("NAM")}}</h1>
+        <div class="side-by-side">
+            <div class="half-width">
+                <h3>❤️ {{creature.get_value("HP")}} / {{creature.get_value("MHP")}}</h3>
+            </div>
+            <div class="half-width">
+                <h3>🛡️ {{creature.get_value("AC")}}</h3>
+            </div>
+        </div>
+
+        <div class="side-by-side">
+            <div class="half-width">
+                <ul>
+                    <li>STR : {{creature.get_value("STR")}}</li>
+                    <li>DEX : {{creature.get_value("DEX")}}</li>
+                    <li>CON : {{creature.get_value("CON")}}</li>
+                    <li>INT : {{creature.get_value("INT")}}</li>
+                    <li>WIS : {{creature.get_value("WIS")}}</li>
+                    <li>CHA : {{creature.get_value("CHA")}}</li>
+                </ul>
+            </div>
+            <div class="half-width">
+                <p>Quick dices</p>
+                <div class="btn-container">
+                    <button onclick="rollDice({{creature.card_id}}, 20)">1d20</button>
+                    <button onclick="rollDice({{creature.card_id}}, 10)">1d10</button>
+                    <button onclick="rollDice({{creature.card_id}}, 8)">1d8</button>
+                    <button onclick="rollDice({{creature.card_id}}, 4)">1d4</button>
+
+                    <label onclick="setAdv({{creature.card_id}}, 2)">🟩</label>
+                    <label onclick="setAdv({{creature.card_id}}, -2)">🟥</label>
+                </div>
+                <p>🎲</p>
+            </div>
+        </div>
+    </div>
+</div>
